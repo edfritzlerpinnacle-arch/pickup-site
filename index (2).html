@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickUp — Never Miss a Job Lead Again | Phoenix, AZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange: #E8530A;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --off-white: #F7F5F0;
+  --border: #E0DDD8;
+  --text: #1A1A1A;
+  --text-secondary: #5A5754;
+  --mid-gray: #888580;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 2.5rem; height: 64px;
+  background: var(--white); border-bottom: 1px solid var(--border);
+}
+
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: 0.05em; color: var(--dark); text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+
+.nav-loc { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.04em; }
+.nav-loc::before { content: '● '; color: var(--orange); font-size: 0.5rem; vertical-align: middle; }
+
+.nav-cta { background: var(--orange); color: var(--white); padding: 0.6rem 1.4rem; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+.nav-cta:hover { background: #c94708; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; padding-top: 64px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--off-white);
+}
+
+.hero-left { padding: 5rem 3rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+
+.hero-badge {
+  display: inline-block; background: rgba(232,83,10,0.09); border: 1px solid rgba(232,83,10,0.22);
+  color: var(--orange); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.4rem 0.85rem; margin-bottom: 1.75rem;
+  opacity: 0; animation: fadeUp 0.5s ease forwards 0.2s;
+}
+
+.hero-h1 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: clamp(42px, 4.5vw, 64px);
+  font-weight: 700; line-height: 1.02; text-transform: uppercase; color: var(--dark);
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.35s;
+}
+.hero-h1 .accent { color: var(--orange); display: block; }
+
+.hero-sub {
+  font-size: 1rem; color: var(--text-secondary); line-height: 1.65; margin-top: 1.5rem; max-width: 420px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.5s;
+}
+
+.hero-btns {
+  display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; max-width: 320px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.65s;
+}
+
+.btn-orange { background: var(--orange); color: var(--white); padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; text-align: center; transition: background 0.2s; display: block; }
+.btn-orange:hover { background: #c94708; }
+.btn-outline { border: 1.5px solid var(--border); color: var(--dark); padding: 1rem 1.5rem; font-size: 0.95rem; text-decoration: none; text-align: center; transition: all 0.2s; display: block; }
+.btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+.hero-checks {
+  margin-top: 1.5rem; font-size: 0.8rem; color: var(--mid-gray);
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.8s;
+}
+.hero-checks span { margin-right: 1rem; }
+.hero-checks span::before { content: '✓ '; color: var(--orange); font-weight: 500; }
+
+/* HERO RIGHT */
+.hero-right {
+  background: var(--dark); padding: 5rem 2.5rem; display: flex; flex-direction: column; justify-content: center;
+  opacity: 0; animation: fadeIn 0.8s ease forwards 0.5s;
+}
+
+.stat-eyebrow { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 2.5rem; }
+
+.stat { padding: 1.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.stat:first-of-type { border-top: 1px solid rgba(255,255,255,0.07); }
+.stat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 3.8rem; font-weight: 700; color: var(--orange); line-height: 1; }
+.stat-t { font-size: 0.92rem; color: rgba(255,255,255,0.85); font-weight: 500; margin-top: 0.35rem; }
+.stat-d { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.25rem; line-height: 1.5; }
+
+.az-box { margin-top: 2rem; padding: 1rem 1.1rem; border: 1px solid rgba(232,83,10,0.28); background: rgba(232,83,10,0.06); }
+.az-box-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.35rem; }
+.az-box-text { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+
+/* TICKER */
+.ticker { background: var(--orange); padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner { display: inline-flex; animation: ticker 28s linear infinite; }
+.ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); padding: 0 2rem; }
+.ticker-item::after { content: '·'; margin-left: 2rem; color: rgba(255,255,255,0.35); }
+
+/* GENERIC SECTION */
+.sec { padding: 5rem 3rem; }
+.sec-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+.sec-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(30px, 3.5vw, 48px); font-weight: 700; text-transform: uppercase; line-height: 1.05; color: var(--dark); }
+
+/* PAIN */
+.pain-sec { background: var(--white); border-top: 1px solid var(--border); }
+.pain-lead { font-size: 1rem; color: var(--text-secondary); line-height: 1.65; max-width: 520px; margin-top: 0.85rem; }
+.pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 2.5rem; background: var(--border); border: 1px solid var(--border); }
+.pain-card { background: var(--white); padding: 2rem; transition: background 0.2s; }
+.pain-card:hover { background: var(--off-white); }
+.pain-n { font-family: 'Barlow Condensed', sans-serif; font-size: 3.2rem; font-weight: 700; color: var(--orange); line-height: 1; }
+.pain-t { font-size: 0.92rem; font-weight: 500; color: var(--dark); margin: 0.5rem 0 0.35rem; }
+.pain-d { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* HOW */
+.how-sec { background: var(--off-white); border-top: 1px solid var(--border); }
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.step { background: var(--white); border: 1px solid var(--border); padding: 1.75rem; transition: border-color 0.2s; }
+.step:hover { border-color: var(--orange); }
+.step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; margin-bottom: 0.85rem; }
+.step-t { font-size: 0.95rem; font-weight: 500; color: var(--dark); margin-bottom: 0.5rem; }
+.step-d { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* WHO */
+.who-sec { background: var(--white); border-top: 1px solid var(--border); }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1.75rem; align-items: start; }
+.who-text { font-size: 1rem; line-height: 1.7; color: var(--text-secondary); }
+.who-text strong { color: var(--dark); font-weight: 500; }
+.trades { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.trade { border: 1.5px solid var(--border); padding: 0.45rem 0.9rem; font-size: 0.8rem; color: var(--text-secondary); transition: all 0.15s; cursor: default; }
+.trade:hover { border-color: var(--orange); color: var(--orange); background: rgba(232,83,10,0.04); }
+
+/* QUOTE */
+.quote-sec { background: var(--dark); padding: 5rem 3rem; border-top: 4px solid var(--orange); }
+.q-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; }
+.q-text { font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.55; color: rgba(255,255,255,0.88); font-weight: 300; border-left: 3px solid var(--orange); padding-left: 1.5rem; max-width: 680px; }
+.q-attr { margin-top: 1.5rem; padding-left: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.38); }
+.q-attr strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+/* PRICING */
+.price-sec { background: var(--off-white); border-top: 1px solid var(--border); }
+.price-lead { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-top: 0.75rem; max-width: 480px; }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; max-width: 700px; }
+.plan { background: var(--white); border: 1.5px solid var(--border); padding: 2rem; position: relative; transition: border-color 0.2s; }
+.plan:hover { border-color: rgba(232,83,10,0.35); }
+.plan.hot { border-color: var(--orange); border-width: 2px; }
+.plan-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 0.63rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.7rem; margin-bottom: 0.85rem; }
+.plan-name { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 0.65rem; }
+.plan-price { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 700; color: var(--dark); line-height: 1; }
+.plan-price sub { font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--mid-gray); vertical-align: baseline; }
+.plan-sub { font-size: 0.8rem; color: var(--text-secondary); margin: 0.4rem 0 1.25rem; line-height: 1.4; }
+.plan-feats { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.plan-feats li { font-size: 0.84rem; color: var(--text-secondary); display: flex; gap: 0.55rem; line-height: 1.4; }
+.plan-feats li::before { content: '✓'; color: var(--orange); font-weight: 500; flex-shrink: 0; }
+.plan-btn { display: block; text-align: center; padding: 0.85rem; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+.pb-fill { background: var(--orange); color: var(--white); }
+.pb-fill:hover { background: #c94708; }
+.pb-ghost { border: 1.5px solid var(--border); color: var(--dark); }
+.pb-ghost:hover { border-color: var(--orange); color: var(--orange); }
+.price-footer { margin-top: 1.1rem; font-size: 0.78rem; color: var(--mid-gray); }
+
+/* CTA */
+.cta-sec { background: var(--orange); padding: 5.5rem 3rem; text-align: center; }
+.cta-h { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(38px, 6vw, 70px); font-weight: 700; text-transform: uppercase; color: var(--white); line-height: 1.0; }
+.cta-sub { font-size: 1rem; color: rgba(255,255,255,0.8); margin: 1.1rem auto 2rem; max-width: 440px; line-height: 1.6; }
+.btn-white { display: inline-block; background: var(--white); color: var(--orange); padding: 1rem 2.5rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+.btn-white:hover { background: var(--off-white); }
+.cta-note { margin-top: 0.85rem; font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+/* FOOTER */
+footer { background: var(--dark); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.foot-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--white); letter-spacing: 0.05em; }
+.foot-logo span { color: var(--orange); }
+.foot-text { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+@media (max-width: 768px) {
+  nav { padding: 0 1.25rem; }
+  .nav-loc { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 3rem 1.5rem 2rem; }
+  .hero-right { padding: 2.5rem 1.5rem; }
+  .sec { padding: 3.5rem 1.5rem; }
+  .pain-grid, .steps, .who-grid, .plans { grid-template-columns: 1fr; }
+  .quote-sec { padding: 3.5rem 1.5rem; }
+  .cta-sec { padding: 3.5rem 1.5rem; }
+  footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">PICK<span>UP</span></a>
+  <div class="nav-loc">Serving Phoenix &amp; All of Arizona</div>
+  <a href="https://calendly.com/pickupaz/pickup-demo" target="_blank" class="nav-cta">Book Free Demo</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">AI Receptionist for Contractors</div>
+    <h1 class="hero-h1">
+      You're on a job.<br>
+      Your phone's ringing.<br>
+      <span class="accent">That lead just called your competitor.</span>
+    </h1>
+    <p class="hero-sub">PickUp answers your calls and texts 24/7 — books jobs, captures leads, and texts you what matters. We set it all up for you. Done in under an hour.</p>
+    <div class="hero-btns">
+      <a href="https://calendly.com/pickupaz/pickup-demo" target="_blank" class="btn-orange">Book a Free 15-Min Demo</a>
+      <a href="#how" class="btn-outline">See How It Works</a>
+    </div>
+    <div class="hero-checks">
+      <span>No contracts</span>
+      <span>Setup in 1 hour</span>
+      <span>Cancel anytime</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-eyebrow">What missed calls cost Arizona contractors</div>
+    <div class="stat">
+      <div class="stat-n">62%</div>
+      <div class="stat-t">Of callers never leave a voicemail</div>
+      <div class="stat-d">They hang up and call the next contractor. That job is gone forever.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">$400+</div>
+      <div class="stat-t">Average value of each missed call</div>
+      <div class="stat-d">Miss 3 calls a week and you're leaving $60K+ on the table every year.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">78%</div>
+      <div class="stat-t">Of customers hire whoever responds first</div>
+      <div class="stat-d">Speed wins. PickUp responds in seconds, not hours.</div>
+    </div>
+    <div class="az-box">
+      <div class="az-box-label">Phoenix Market</div>
+      <div class="az-box-text">With 4.8 million people in the Valley and construction booming, the contractors winning right now are the ones who never miss a lead.</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Plumbing</span><span class="ticker-item">HVAC</span><span class="ticker-item">Electrical</span><span class="ticker-item">Roofing</span><span class="ticker-item">Landscaping</span><span class="ticker-item">General Contracting</span><span class="ticker-item">Painting</span><span class="ticker-item">Pest Control</span><span class="ticker-item">Pool Service</span><span class="ticker-item">Flooring</span>
+    <span class="ticker-item">Plumbing</span><span class="ticker-item">HVAC</span><span class="ticker-item">Electrical</span><span class="ticker-item">Roofing</span><span class="ticker-item">Landscaping</span><span class="ticker-item">General Contracting</span><span class="ticker-item">Painting</span><span class="ticker-item">Pest Control</span><span class="ticker-item">Pool Service</span><span class="ticker-item">Flooring</span>
+  </div>
+</div>
+
+<section class="sec pain-sec">
+  <div class="sec-tag">The real cost of a missed call</div>
+  <h2 class="sec-title">You're losing money every single day.</h2>
+  <p class="pain-lead">When you're under a sink or on a roof, your phone is your biggest liability. Here's what's actually happening.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-n">3–5</div>
+      <div class="pain-t">Contractors a customer calls before they book</div>
+      <div class="pain-d">They don't wait for callbacks. They call down the list until someone picks up. If it's not you, it's your competitor.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-n">85%</div>
+      <div class="pain-t">Of callers who don't reach you won't call back</div>
+      <div class="pain-d">One unanswered call and that customer is gone forever. No voicemail. No second chance.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-n">24/7</div>
+      <div class="pain-t">When Arizona homeowners actually need you</div>
+      <div class="pain-d">AC breaks at 10pm in July. Pipe bursts Sunday morning. Emergency jobs go to whoever picks up first.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-n">$0</div>
+      <div class="pain-t">What you make from a lead you never captured</div>
+      <div class="pain-d">It doesn't matter how good you are at the job if you never get the chance to bid it.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec how-sec" id="how">
+  <div class="sec-tag">How it works</div>
+  <h2 class="sec-title">Simple. Fast. Done for you.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-t">We set everything up for you</div>
+      <div class="step-d">One 30-minute call. We build your AI with your services, pricing, and trade. You don't touch a single setting.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-t">PickUp answers everything</div>
+      <div class="step-d">Calls and texts answered instantly, day or night. Books jobs on your calendar and captures every lead automatically.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-t">You show up and close jobs</div>
+      <div class="step-d">Each morning you get a rundown of every lead from the night before. Do the work, get paid. That's it.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec who-sec">
+  <div class="sec-tag">Who it's for</div>
+  <h2 class="sec-title">Built for the guy doing the work.</h2>
+  <div class="who-grid">
+    <p class="who-text">You're not a big company with a front desk. It's <strong>you and maybe a couple guys</strong>, phones ringing while you're on a roof in Scottsdale or under a house in Mesa. You can't answer every call — and every one you miss is money gone.<br><br>PickUp is built for exactly this. <strong>One phone number forward. Under an hour. You're live.</strong></p>
+    <div class="trades">
+      <div class="trade">Plumbing</div><div class="trade">HVAC</div><div class="trade">Electrical</div><div class="trade">Roofing</div><div class="trade">Landscaping</div><div class="trade">General Contracting</div><div class="trade">Painting</div><div class="trade">Pest Control</div><div class="trade">Flooring</div><div class="trade">Pool Service</div><div class="trade">Appliance Repair</div><div class="trade">Handyman</div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-sec">
+  <div class="q-label">Early customer — Phoenix, AZ</div>
+  <p class="q-text">"I was missing 4 or 5 calls a day while I was on jobs. First week with PickUp I booked a $2,200 HVAC replacement from a text I would have ignored until that night. Thing paid for itself 15 times over that first month."</p>
+  <div class="q-attr"><strong>Marcus T.</strong> — HVAC contractor, Phoenix AZ</div>
+</div>
+
+<section class="sec price-sec" id="pricing">
+  <div class="sec-tag">Simple pricing</div>
+  <h2 class="sec-title">Less than one missed job a month.</h2>
+  <p class="price-lead">One missed service call covers an entire year of PickUp. Most customers see ROI in their first week.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">$97<sub>/mo</sub></div>
+      <p class="plan-sub">Best if you mostly get texts and want to start simple.</p>
+      <ul class="plan-feats">
+        <li>24/7 SMS auto-reply</li>
+        <li>Lead capture to your inbox</li>
+        <li>Daily morning summary</li>
+        <li>Google Calendar booking</li>
+        <li>Unlimited contacts</li>
+        <li>We set it up for you</li>
+      </ul>
+      <a href="https://calendly.com/pickupaz/pickup-demo" target="_blank" class="plan-btn pb-ghost">Start Free Trial</a>
+    </div>
+    <div class="plan hot">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$197<sub>/mo</sub></div>
+      <p class="plan-sub">Full call + text answering. What most contractors need.</p>
+      <ul class="plan-feats">
+        <li>Everything in Starter</li>
+        <li>24/7 live call answering (AI voice)</li>
+        <li>Sounds like a real person</li>
+        <li>Missed lead follow-up texts</li>
+        <li>Review request automation</li>
+        <li>Priority setup &amp; support</li>
+      </ul>
+      <a href="https://calendly.com/pickupaz/pickup-demo" target="_blank" class="plan-btn pb-fill">Start Free Trial</a>
+    </div>
+  </div>
+  <p class="price-footer">14-day free trial · No credit card required · We set everything up on a 30-min call</p>
+</section>
+
+<section class="cta-sec" id="book">
+  <h2 class="cta-h">Stop losing jobs<br>while you work.</h2>
+  <p class="cta-sub">Book a free 15-minute call. We'll show you exactly how it works and set everything up for you live.</p>
+  <a href="https://calendly.com/pickupaz/pickup-demo" target="_blank" class="btn-white">Book My Free Demo →</a>
+  <p class="cta-note">No pressure. No pitch deck. Just a quick call and a live demo.</p>
+</section>
+
+<footer>
+  <div class="foot-logo">PICK<span>UP</span></div>
+  <div class="foot-text">AI receptionist for Arizona home service contractors · Phoenix · Scottsdale · Mesa · Chandler · Tempe</div>
+  <div class="foot-text">© 2026 PickUp</div>
+</footer>
+
+</body>
+</html>
